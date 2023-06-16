@@ -35,7 +35,7 @@
     <tr>
       <th scope="col">Id</th>
       <th scope="col">Title</th>
-      <th scope="col">Desc</th>
+      <th scope="col">posted by</th>
       <th scope="col">created at</th>
       <th scope="col">Actions</th>
     </tr>
@@ -46,7 +46,7 @@
         
         <td>{{$post->id}}</td>
         <td>{{$post->title}}</td>
-        <td>{{$post->description}}</td>
+        <td></td>
         <td>{{$post->created_at}}</td>
         <td>
             <a class="btn btn-primary"  href="#"> update</a>

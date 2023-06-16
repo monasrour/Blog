@@ -30,7 +30,8 @@
   
  
   <div class="container">
-    <form action="">
+    <form action="{{route('posts.store')}}" method="POST">
+      @csrf
         <div class="mb-3">
             <label  class="form-label">Title</label>
             <input type="text" class="form-control" name="title">
@@ -40,7 +41,7 @@
             <textarea class="form-control" id="exampleFormControlTextarea1" rows="3" name="description"></textarea>
           </div>
         
-          <a class="btn btn-primary" href=""> ADD</a>
+          <button class="btn btn-primary" >create</button>
     </form>
 </div>
     

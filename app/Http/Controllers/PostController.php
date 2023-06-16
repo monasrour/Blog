@@ -32,7 +32,17 @@ class PostController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        //get the request data 
+        //store it in database
+        // retrn it to index
+        $input=$request->all();
+        // dd(request(),$request);
+        // dd($input);
+        Post::create([
+            'title' =>$request->title,
+            'description' =>$request->description
+        ]);
+        return redirect()->route('posts.index');
     }
 
     /**
