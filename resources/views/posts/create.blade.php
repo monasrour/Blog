@@ -28,7 +28,16 @@
     <a class="btn btn-dark"  href="{{route('posts.index')}}"> ALL posts</a>
 </div>
   
- 
+    @if ($errors->any())
+    <div class="alert alert-danger">
+        <ul>
+            @foreach ($errors->all() as $error)
+                <li>{{ $error }}</li>
+            @endforeach
+        </ul>
+    </div>
+    @endif
+  
   <div class="container">
     <form action="{{route('posts.store')}}" method="POST">
       @csrf
@@ -42,7 +51,7 @@
           </div>
           <div class="mb-3">
             <label for="post creator" class="form-label">Post Creator</label>
-            
+
             <select class="form-control" name="user_id">
               @foreach($users as $user)
               <option value="{{$user->id}}">{{$user->name}}</option>

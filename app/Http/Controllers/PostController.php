@@ -47,6 +47,11 @@ class PostController extends Controller
             //_--------another way to store-----
         // Post::create($request->all());
         $input=$request->all();
+        $request->validate([
+           ' title'=>['required','min:3'],
+           ' description'=>'required'
+        ]);
+       
         Post::create($input);
         return redirect()->route('posts.index');
     }
