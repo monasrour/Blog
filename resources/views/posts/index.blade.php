@@ -51,10 +51,18 @@
         <td>{{$post->user? $post->user->name:'user not found'}}</td>
         <td>{{$post->created_at}}</td>
         <td>
-            <a class="btn btn-primary"  href="#"> update</a>
-            <a class="btn btn-info"  href="{{route('posts.show',['post'=>$post['id']])}}">show</a>
-            <a class="btn btn-danger"  href="{{route('posts.destroy',$post['id'])}}">delete</a>
-        </td>
+          <div class="d-flex">
+              <a class="btn btn-primary mr-2" href="#">Update</a>
+              <a class="btn btn-info mr-2" href="{{ route('posts.show', ['post' => $post['id']]) }}">Show</a>
+              <form action="{{ route('posts.destroy', $post['id']) }}" method="POST" onsubmit="return confirm('Are you sure you want to delete this post?');">
+                  @csrf
+                  @method('DELETE')
+                  <button type="submit" class="btn btn-danger">Delete</button>
+              </form>
+          </div>
+      </td>
+      
+      
       </tr>
     @endforeach
   
