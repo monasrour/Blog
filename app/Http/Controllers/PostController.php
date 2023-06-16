@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Post;
+use App\Models\User;
 use Illuminate\Http\Request;
 use Termwind\Components\Dd;
 
@@ -24,7 +25,9 @@ class PostController extends Controller
     public function create()
     {
         //
-        return view('posts.create');
+        return view('posts.create',[
+            'users' =>User::all()
+        ]);
     }
 
     /**
@@ -35,13 +38,16 @@ class PostController extends Controller
         //get the request data 
         //store it in database
         // retrn it to index
+        // $input=$request->all();
+        // -------way to store_------
+        // Post::create([
+        //     'title' =>$request->title,
+        //     'description' =>$request->description
+        // ]);
+            //_--------another way to store-----
+        // Post::create($request->all());
         $input=$request->all();
-        // dd(request(),$request);
-        // dd($input);
-        Post::create([
-            'title' =>$request->title,
-            'description' =>$request->description
-        ]);
+        Post::create($input);
         return redirect()->route('posts.index');
     }
 

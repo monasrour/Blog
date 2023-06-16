@@ -40,6 +40,14 @@
             <label for="exampleFormControlTextarea1" class="form-label">Description</label>
             <textarea class="form-control" id="exampleFormControlTextarea1" rows="3" name="description"></textarea>
           </div>
+          <div class="mb-3">
+            <label for="post creator" class="form-label">Post Creator</label>
+            <select class="form-control" name="post_creator">
+              @foreach($users as $user)
+              <option >{{$user->name}}</option>
+              @endforeach
+            </select>
+          </div>
         
           <button class="btn btn-primary" >create</button>
     </form>
