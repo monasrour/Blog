@@ -42,16 +42,18 @@
   </thead>
   <tbody>
     @foreach ($posts as $post)
+    {{-- @dd($post->user); --}}
     <tr>
         
         <td>{{$post->id}}</td>
         <td>{{$post->title}}</td>
-        <td></td>
+        {{-- myuserrelationهنا هاخد الفانكشن الي بتحدد علاقة اليوزر بالبوست وااعمل ترينري اوبراتور --}}
+        <td>{{$post->user? $post->user->name:'user not found'}}</td>
         <td>{{$post->created_at}}</td>
         <td>
             <a class="btn btn-primary"  href="#"> update</a>
             <a class="btn btn-info"  href="{{route('posts.show',['post'=>$post['id']])}}">show</a>
-            <a class="btn btn-danger"  href="{{route('posts.destroy',$post->id)}}">delete</a>
+            <a class="btn btn-danger"  href="{{route('posts.destroy',$post['id'])}}">delete</a>
         </td>
       </tr>
     @endforeach
