@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Post;
 use Illuminate\Http\Request;
+use Termwind\Components\Dd;
 
 class PostController extends Controller
 {
@@ -23,6 +24,7 @@ class PostController extends Controller
     public function create()
     {
         //
+        return view('posts.create');
     }
 
     /**
@@ -36,9 +38,12 @@ class PostController extends Controller
     /**
      * Display the specified resource.
      */
-    public function show(Post $post)
+    public function show($post)
     {
-        //
+        // dd($post);
+        $post=Post::find($post);
+      
+        return view('posts.show',['post'=>$post]);
     }
 
     /**

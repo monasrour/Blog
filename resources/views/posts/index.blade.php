@@ -25,7 +25,7 @@
     </div>
   </nav>
 <div class="container">
-    <a class="btn btn-success"  href="#"> Create</a>
+    <a class="btn btn-success"  href="{{route('posts.create')}}"> Add Post</a>
 </div>
   
  
@@ -35,7 +35,7 @@
     <tr>
       <th scope="col">Id</th>
       <th scope="col">Title</th>
-      <th scope="col">Posted by</th>
+      <th scope="col">Desc</th>
       <th scope="col">created at</th>
       <th scope="col">Actions</th>
     </tr>
@@ -43,14 +43,15 @@
   <tbody>
     @foreach ($posts as $post)
     <tr>
-        <th scope="row">{{$post['id']}}</th>
-        <td>{{$post['id']}}</td>
-        <td>{{$post['title']}}</td>
-        <td>{{$post['postedby']}}</td>
+        
+        <td>{{$post->id}}</td>
+        <td>{{$post->title}}</td>
+        <td>{{$post->description}}</td>
+        <td>{{$post->created_at}}</td>
         <td>
             <a class="btn btn-primary"  href="#"> update</a>
-            <a class="btn btn-info"  href="#">show</a>
-            <a class="btn btn-danger"  href="#">delete</a>
+            <a class="btn btn-info"  href="{{route('posts.show',['post'=>$post['id']])}}">show</a>
+            <a class="btn btn-danger"  href="{{route('posts.destroy',$post->id)}}">delete</a>
         </td>
       </tr>
     @endforeach

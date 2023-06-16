@@ -25,24 +25,23 @@
     </div>
   </nav>
 <div class="container">
-    <a class="btn btn-dark"  href="{{route('posts.index')}}"> ALL posts</a>
+    <a class="btn btn-dark"  href="{{route('posts.create')}}"> back</a>
 </div>
   
  
-  <div class="container">
-    <form action="">
-        <div class="mb-3">
-            <label  class="form-label">Title</label>
-            <input type="text" class="form-control" name="title">
-          </div>
-          <div class="mb-3">
-            <label for="exampleFormControlTextarea1" class="form-label">Description</label>
-            <textarea class="form-control" id="exampleFormControlTextarea1" rows="3" name="description"></textarea>
-          </div>
-        
-          <a class="btn btn-primary" href=""> ADD</a>
-    </form>
+<div class="container">
+
+    <div class="card">
+        <h3 class="card-header">Details about post</h3>
+        <div class="card-body">
+          <h4 class="card-title" name="title">{{ $post->title ?? '' }}</h4>
+          <p class="card-text" name="description">{{ $post->description ?? '' }}</p>
+          <p class="card-text" >{{ $post->created_at ?? '' }}</p>
+        </div>
+    </div>
+
 </div>
+
     
 
 </body>
