@@ -2,9 +2,7 @@
 
 use App\Http\Controllers\PostController;
 use Illuminate\Support\Facades\Route;
-use Laravel\Socialite\Facades\Socialite;
 
-use Illuminate\Support\Facades\Auth;
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -30,7 +28,7 @@ Route::get('posts/{post}',[PostController::class ,'show'])->name('posts.show')->
 Route::get('posts/{post}/edit',[PostController::class ,'edit'])->name('posts.edit')->middleware('auth');
 Route::put('posts/{post}',[PostController::class ,'update'])->name('posts.update')->middleware('auth');
 Route::delete('posts/{post}',[PostController::class ,'destroy'])->name('posts.destroy')->middleware('auth');
-Route::get('posts/{id}/restore', [PostController::class, 'restore'])->name('posts.restore');
+Route::put('posts/{id}/restore', [PostController::class, 'restore'])->name('posts.restore');
 
 
 
@@ -49,14 +47,4 @@ Route::get('posts/{id}/restore', [PostController::class, 'restore'])->name('post
 Auth::routes();
 
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
-
-
-Route::get('/auth/redirect', function () {
-    return Socialite::driver('github')->redirect();
-});
- 
-Route::get('/auth/callback', function () {
-    $user = Socialite::driver('github')->user();
- 
-    // $user->token
-});
+// errorr in pakage
