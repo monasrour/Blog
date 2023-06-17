@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\api;
 
 use App\Http\Controllers\Controller;
+use App\Http\Resources\PostResource;
 use App\Models\Post;
 use Illuminate\Http\Request;
 
@@ -13,7 +14,9 @@ class PostController extends Controller
      */
     public function index()
     {
-        return Post::all();
+        //return Post::all();
+        $posts= Post::all();
+        return PostResource::collection($posts);//transformation From Resources file
     }
 
     /**
@@ -27,9 +30,10 @@ class PostController extends Controller
     /**
      * Display the specified resource.
      */
-    public function show(string $id)
+    public function show( $post)
     {
-        //
+        $post= Post::find($post);
+        return new PostResource($post);
     }
 
     /**
