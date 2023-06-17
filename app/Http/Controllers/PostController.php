@@ -6,6 +6,7 @@ use App\Models\Post;
 use App\Models\User;
 use Illuminate\Http\Request;
 use Termwind\Components\Dd;
+use App\http\Requests\StorePostRequest;
 
 class PostController extends Controller
 {
@@ -33,7 +34,7 @@ class PostController extends Controller
     /**
      * Store a newly created resource in storage.
      */
-    public function store(Request $request)
+    public function store(StorePostRequest $request)
     {
         //get the request data 
         //store it in database
@@ -47,10 +48,10 @@ class PostController extends Controller
             //_--------another way to store-----
         // Post::create($request->all());
         $input=$request->all();
-        $request->validate([
-           ' title'=>['required','min:3'],
-           ' description'=>'required'
-        ]);
+        // $request->validate([
+        //    ' title'=>['required','min:3'],
+        //    ' description'=>'required'
+        // ]);
        
         Post::create($input);
         return redirect()->route('posts.index');
