@@ -2,7 +2,7 @@
 
 use App\Http\Controllers\PostController;
 use Illuminate\Support\Facades\Route;
-
+use App\Models\Message;
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -48,3 +48,11 @@ Auth::routes();
 
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
 // errorr in pakage
+Route::get('/dashboard', function () {
+    return view('home');
+})->middleware(['auth'])->name('home');
+Route::get('delete_chat', function () {
+    Message::truncate();
+    return redirect()->route('dashboard');
+
+})->middleware(['auth'])->name('delete_chat');
